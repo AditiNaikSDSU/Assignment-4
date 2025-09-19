@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Layout 2</title>
+<style>
+  :root { --g: 20px; --grey: #cfcfcf; }
+  * { box-sizing: border-box; }
+  body { margin: 0; display: flex; justify-content: center; }
+  .page { width: 960px; margin: 24px 0; }
+  .box { background: var(--grey); padding: 10px; }
+
+  .layout2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* first row taller so nav can sit centered */
+    grid-template-rows: 110px auto auto auto 60px;
+    grid-template-areas:
+      "logo nav"
+      "title title"
+      "lead lead"
+      "grid grid"
+      "foot foot";
+    gap: var(--g);
+  }
+
+  .logo { grid-area: logo; height:90px; width: 60%;}
+
+  .nav {
+    grid-area: nav;
+    display: flex;
+    align-items: center; 
+  }
+  .nav-box {
+    background: var(--grey);
+    width: 100%;
+    height: 48px;         
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+  }
+  .nav-box ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 560px;
+  }
+  .nav-box li {
+    text-align: center;
+    padding: 6px 0;
+    font-size: 14px;
+  }
+
+  .title { grid-area: title; font-size: 36px; font-weight: bold; }
+  .lead { grid-area: lead; font-size: 18px; font-weight: bold; }
+  .grid {
+    grid-area: grid;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--g);
+  }
+  .grid .box { height: 180px; }
+
+  .foot { grid-area: foot; height: 40px; display: grid; place-items: center; }
+</style>
+</head>
+<body>
+<div class="page layout2">
+  <div class="box logo">Company Logo</div>
+
+ 
+  <nav class="nav" aria-label="Navigation">
+    <div class="nav-box">
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+      </ul>
+    </div>
+  </nav>
+
+  <h1 class="title">
+    Lorem ipsum dolor sit amet, ne saepe phaedrum cotidieque has, natum zril pro ei.
+  </h1>
+  <p class="lead">
+    Cu vel aliquid lobortis deseruisse. Nam at adipisci dignissim forensibus.
+    Qui an recteque maluisset assentior, cu ferri aperiam imperdiet sed.
+  </p>
+
+  <div class="grid">
+    <div class="box"></div><div class="box"></div><div class="box"></div>
+    <div class="box"></div><div class="box"></div><div class="box"></div>
+    <div class="box"></div><div class="box"></div><div class="box"></div>
+  </div>
+
+  <footer class="box foot">Copyright Notice</footer>
+</div>
+</body>
+</html>

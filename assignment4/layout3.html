@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Layout 3</title>
+<style>
+  :root { --g: 20px; --grey: #cfcfcf; }
+  * { box-sizing: border-box; }
+  body { margin: 0; display: flex; justify-content: center; }
+  .page { width: 960px; margin: 24px 0; }
+  .box { background: var(--grey); padding: 10px; }
+
+  .layout3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* taller first row so nav strip can sit centered */
+    grid-template-rows: 110px auto auto auto 60px;
+    grid-template-areas:
+      "logo nav"
+      "hero hero"
+      "title1 title2"
+      "colL  colR"
+      "foot  foot";
+    gap: var(--g);
+  }
+
+ 
+  .logo { grid-area: logo; height:90px; width: 60%;}
+
+  .nav {
+    grid-area: nav;
+    display: flex;
+    align-items: center;        
+  }
+  .nav-box {
+    background: var(--grey);
+    width: 100%;
+    height: 48px;               
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+  }
+  .nav-box ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 560px;           
+  }
+  .nav-box li {
+    text-align: center;
+    padding: 6px 0;
+    font-size: 14px;
+  }
+
+  .hero { grid-area: hero; height: 360px; display: grid; align-content: center; padding: 40px 48px; }
+  .hero h2 { font-size: 40px; margin: 0 0 12px; }
+  .hero p  { font-size: 18px; font-weight: 600; margin: 0; }
+
+  .title1 { grid-area: title1; height: 44px; width: 60%; }
+  .title2 { grid-area: title2; height: 44px; width: 60%; }
+
+  .colL {
+    grid-area: colL;
+    display: grid;
+    grid-template-rows: 220px 220px;
+    gap: var(--g);
+  }
+  .colR {
+    grid-area: colR;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 220px;
+    gap: var(--g);
+  }
+
+  .foot { grid-area: foot; height: 40px; display: grid; place-items: center; }
+</style>
+</head>
+<body>
+<div class="page layout3">
+  <div class="box logo">Company Logo</div>
+
+  <!-- Right column: centered slim nav bar -->
+  <nav class="nav" aria-label="Navigation">
+    <div class="nav-box">
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="box hero">
+    <h2>Lorem ipsum dolor sit amet, ne saepe<br>phaedrum cotidieque has, natum zril pro.</h2>
+    <p>Cu vel aliquid lobortis deseruisse. Nam at adipisci dignissim forensibus. Qui an recteque maluisset assentior, cu ferri aperiam imperdiet sed.</p>
+  </div>
+
+  <div class="box title1">Title</div>
+  <div class="box title2">Title</div>
+
+  <div class="colL">
+    <div class="box">Blog Post 1</div>
+    <div class="box">Blog Post 2</div>
+  </div>
+
+  <div class="colR">
+    <div class="box">Featured Product 1</div>
+    <div class="box">Featured Product 2</div>
+    <div class="box">Featured Product 3</div>
+    <div class="box">Featured Product 4</div>
+  </div>
+
+  <footer class="box foot">Copyright Notice</footer>
+</div>
+</body>
+</html>

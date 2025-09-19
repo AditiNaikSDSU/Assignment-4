@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Layout 1</title>
+<style>
+  :root { --g: 20px; --grey: #cfcfcf; }
+  * { box-sizing: border-box; }
+  body { margin: 0; display: flex; justify-content: center; }
+  .page { width: 960px; margin: 24px 0; }
+
+  /* generic grey box */
+  .box { background: var(--grey); padding: 10px; }
+
+  /* Grid */
+  .layout1{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    /* taller first row so the nav bar can sit centered within it */
+    grid-template-rows: 110px auto auto 60px;
+    grid-template-areas:
+      "logo nav"
+      "hero hero"
+      "p1   p2"
+      "foot foot";
+    gap: var(--g);
+  }
+
+
+  .logo{ grid-area:logo; height:90px; width: 60%;}
+
+  .nav{ 
+    grid-area:nav;
+    display:flex;
+    align-items:center;      
+  }
+  .nav-box{
+    background:var(--grey);
+    width:100%;
+    height:48px;             
+    display:flex;
+    align-items:center;     
+    justify-content:center;
+    padding:0 12px;
+  }
+  .nav-box ul{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    list-style:none;
+    margin:0;
+    padding:0;
+    width:100%;
+    max-width:560px;         
+  }
+  .nav-box li{
+    text-align:center;
+    padding:6px 0;
+    font-size:14px;
+  }
+
+  .hero{ grid-area:hero; height:420px; }
+  .p1{ grid-area:p1; height:220px; }
+  .p2{ grid-area:p2; height:220px; }
+  .foot{ grid-area:foot; display:grid; place-items:center; height:40px; }
+</style>
+</head>
+<body>
+<div class="page layout1">
+  <div class="box logo">Company Logo</div>
+
+
+  <nav class="nav" aria-label="Navigation">
+    <div class="nav-box">
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="box hero">Featured Product Image</div>
+  <div class="box p1">Product 1</div>
+  <div class="box p2">Product 2</div>
+  <footer class="box foot">Copyright Notice</footer>
+</div>
+</body>
+</html>
